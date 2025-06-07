@@ -25,6 +25,6 @@ jobs:
       run: |
         newman run Bookstore Automation On Github-Jenkins.postman_collection.json
         # If you have environment file:
-        # newman run Bookstore Automation On Github-Jenkins.postman_collection.json -e UAT.postman_environment.json
+        newman run Bookstore Automation On Github-Jenkins.postman_collection.json -e UAT.postman_environment.json
 
 
