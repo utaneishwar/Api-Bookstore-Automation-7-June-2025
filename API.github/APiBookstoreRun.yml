@@ -2,7 +2,7 @@ name: Run Postman Collection on Schedule
 
 on:
   schedule:
-    - cron: '45 7 * * *'  # Runs every day at 10:00 AM UTC
+    - cron: '60 7 * * *'  # Runs every day at 10:00 AM UTC
   workflow_dispatch:      # Allow manual trigger
 
 jobs:
@@ -23,7 +23,8 @@ jobs:
 
     - name: Run Postman Collection
       run: |
-        newman run postman_collection.json
+        newman run Bookstore Automation On Github-Jenkins.postman_collection.json
         # If you have environment file:
-        # newman run postman_collection.json -e postman_environment.json
+        # newman run Bookstore Automation On Github-Jenkins.postman_collection.json -e UAT.postman_environment.json
+
 
