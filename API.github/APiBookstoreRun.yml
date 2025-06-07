@@ -1,0 +1,29 @@
+name: Run Postman Collection on Schedule
+
+on:
+  schedule:
+    - cron: '0 10 * * *'  # Runs every day at 10:00 AM UTC
+  workflow_dispatch:      # Allow manual trigger
+
+jobs:
+  run-postman-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install Newman
+      run: npm install -g newman
+
+    - name: Run Postman Collection
+      run: |
+        newman run postman_collection.json
+        # If you have environment file:
+        # newman run postman_collection.json -e postman_environment.json
+
