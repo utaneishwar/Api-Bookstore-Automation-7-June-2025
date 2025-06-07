@@ -13,6 +13,12 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
+    - name: Upload HTML Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: postman-report
+        path: newman/report.html
+      
     - name: Install Node.js
       uses: actions/setup-node@v3
       with:
@@ -23,4 +29,9 @@ jobs:
 
     - name: Run Postman Collection
       run: |
-        newman run "Bookstore Automation On Github-Jenkins.postman_collection.json" -e "UAT.postman_environment.json"
+        newman run "Bookstore Automation On Github-Jenkins.postman_collection.json" -e "UAT.postman_environment.json"\
+        --reporters cli,html \
+        --reporter-html-export newman/report.html
+        - name: Upload HTML Report
+
+        
